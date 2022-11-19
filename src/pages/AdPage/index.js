@@ -1,25 +1,10 @@
-import 
-React, 
-{ 
-    useState, 
-    useEffect 
-} from 'react';
-import 
-{ 
-    PageArea,
-    Fake,
-    OthersArea,
-    BreadChump
-} from './styled';
-import { 
-    useParams,
-    Link
-} from 'react-router-dom';
+import React, { useState, useEffect } from "react";
 import { Slide } from 'react-slideshow-image';
-import 'react-slideshow-image/dist/styles.css';
-import { PageContainer } from '../../components/MainComponents';
+import { PageContainer } from "../../components/MainComponents";
+import { PageArea, FakeAd, OthersArea, BreadChumb } from "./styled";
+import useApi from "../../helpers/OlxAPI";
+import { useParams, Link } from 'react-router-dom';
 import AdItem from '../../components/partials/AdItem';
-import useApi from '../../helpers/OlxAPI';
 
 const Page = () => {
     const api = useApi();
@@ -62,7 +47,7 @@ const Page = () => {
     return (
         <PageContainer>
             {adInfo.category &&
-                <BreadChump>
+                <BreadChumb>
                     Você está em:
                     <Link
                         to="/"
@@ -82,14 +67,14 @@ const Page = () => {
                         {adInfo.category.name}
                     </Link>
                     / {adInfo.title}
-                </BreadChump>
+                </BreadChumb>
             }
             <PageArea>
                 <div className="leftSide">
                     <div className="box">
                         <div className="adImage">
                             {loading && 
-                                <Fake height={300} />
+                                <FakeAd height={300} />
                             }
                             {adInfo.images &&
                                 <Slide>
@@ -103,7 +88,7 @@ const Page = () => {
                         </div>
                         <div className="adInfo">
                             <div className="adName">
-                                {loading && <Fake height={20} />}
+                                {loading && <FakeAd height={20} />}
                                 {adInfo.title &&
                                     <h2>{adInfo.title}</h2>
                                 }
@@ -114,7 +99,7 @@ const Page = () => {
                                 }
                             </div>
                             <div className="adDescription">
-                                {loading && <Fake height={100} />}
+                                {loading && <FakeAd height={100} />}
                                 {adInfo.description}
                                 <hr />
                                 {adInfo.views &&
@@ -128,7 +113,7 @@ const Page = () => {
                 </div>
                 <div className="rightSide">
                     <div className="box box--padding">
-                        {loading && <Fake height={20} />}
+                        {loading && <FakeAd height={20} />}
                         {adInfo.priceNegotiabled && 
                             "Preço Negociável"
                         }
@@ -138,7 +123,7 @@ const Page = () => {
                             </div>
                         }
                     </div>
-                    {loading && <Fake height={50} />}
+                    {loading && <FakeAd height={50} />}
                     {adInfo.userInfo && 
                         <>
                             <a

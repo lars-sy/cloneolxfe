@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Fake = styled.div`
+export const FakeAd = styled.div`
     background-color: #ddd;
     height: ${props => props.height || 20}px;
 `;
